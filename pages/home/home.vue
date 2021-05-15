@@ -1,5 +1,9 @@
 <template>
   <view class="page">
+    <view class="my-search-box">
+       <my-search @click="gotoSearch"></my-search>
+    </view>
+   
     <!-- 轮播图区域 -->
     <swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" circular>
       <swiper-item v-for="item in swiperList" :key="item.id">
@@ -175,6 +179,11 @@ export default {
         });
       }
      
+    },
+    gotoSearch(){
+      uni.navigateTo({
+        url:"/subpackage/search/search"
+      })
     }
   }
 };
@@ -255,5 +264,10 @@ swiper {
   border-radius: 10rpx;
   top: -45rpx;
   left: -8rpx;
+}
+.my-search-box {
+  position: sticky;
+  top: 0;
+  z-index: 999;
 }
 </style>

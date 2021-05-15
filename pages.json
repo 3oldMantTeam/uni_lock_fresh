@@ -32,13 +32,30 @@
 
       }
 
-    }]
+    }    ,{
+                    "path" : "search/search",
+                    "style" :                                                                                    
+                {
+                
+                }
+                
+                }
+                ,{
+                    "path" : "goods_list/goods_list",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+            ]
   }],
   "globalStyle": {
     "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "小鲜儿",
+    "navigationBarTitleText": "锁鲜儿",
     "navigationBarBackgroundColor": "#C00000",
-    "backgroundColor": "#E1E1E1",
+    "backgroundColor": "#F5F5F5",
     "app-plus": {
       "background": "#efeff4"
     }

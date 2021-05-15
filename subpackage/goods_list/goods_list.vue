@@ -1,6 +1,6 @@
 <template>
 	<view>
-		物品详细页面
+		goods_list页面
 	</view>
 </template>
 
