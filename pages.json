@@ -2,39 +2,49 @@
   "pages": [{
     "path": "pages/home/home",
     "style": {
-      
+
     }
 
   }, {
     "path": "pages/cate/cate",
     "style": {
-   
+
     }
 
   }, {
     "path": "pages/cart/cart",
     "style": {
-      
+
     }
 
   }, {
     "path": "pages/my/my",
     "style": {
-     
+
     }
 
+  }],
+  "subPackages": [{
+    "root": "subpackage",
+    "pages": [{
+      "path": "goods_detail/goods_detail",
+      "style": {
+
+      }
+
+    }]
   }],
   "globalStyle": {
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "小鲜儿",
     "navigationBarBackgroundColor": "#C00000",
-    "backgroundColor": "#FFFFFF",
+    "backgroundColor": "#E1E1E1",
     "app-plus": {
       "background": "#efeff4"
     }
   },
   "tabBar": {
-    "selectedColor":"C00000",
+    "selectedColor": "C00000",
     "list": [{
         "pagePath": "pages/home/home",
         "text": "首页",
