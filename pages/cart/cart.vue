@@ -1,19 +1,17 @@
 <template>
-	<view>
-		cart1
-	</view>
+  <view>cart1</view>
 </template>
 
 <script>
-	export default {
-		data() {
-			return {
-				
-			};
-		}
-	}
+  import badgeMix from '@/mixins/tabbar-badge.js'
+ export default {
+   mixins:[badgeMix],
+   data(){
+     return{
+       
+     };
+   }
+ }
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

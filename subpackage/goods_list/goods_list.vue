@@ -1,5 +1,6 @@
 <template>
   <view class="page_goods_list">
+    
     <view class="goods-list">
       <block v-for="(item, i) in goodsList" :key="item.id">
         <uni-card>
@@ -40,13 +41,15 @@ export default {
         // 每页显示多少条数据
         pagesize: 10
       },
+   
+      
       goodsList: [
         {
           id: 1,
           img_src: 'https://img.alicdn.com/bao/uploaded/i4/4117837186/O1CN01TMzaK322xEjmmNhGC_!!4117837186-0-lubanu-s.jpg',
           price: 29.9,
           desc: '超级无敌好吃的蔬菜，水果，海鲜小程序平台，价格美丽，品质动人！',
-          goods_id:1
+          goods_id:1,
         },
         {
           id: 2,
@@ -138,6 +141,8 @@ export default {
     this.queryObj.cid = options.id || '';
   },
   methods: {
+ 
+    
     gotoDetail(item){
       uni.navigateTo({
         url:"/subpackage/goods_detail/goods_detail?goos_id="+item.goos_id

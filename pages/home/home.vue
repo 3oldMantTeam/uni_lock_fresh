@@ -1,9 +1,7 @@
 <template>
   <view class="page">
-    <view class="my-search-box">
-       <my-search @click="gotoSearch"></my-search>
-    </view>
-   
+    <view class="my-search-box"><my-search @click="gotoSearch"></my-search></view>
+
     <!-- 轮播图区域 -->
     <swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" circular>
       <swiper-item v-for="item in swiperList" :key="item.id">
@@ -36,13 +34,11 @@
               <uni-col :span="14">
                 <view class="desc">
                   <view>好吃的水果海鲜</view>
-                
+
                   <view class="about">
-                    <view class="ad-tips-good">
-                      好货推荐
-                    </view>
+                    <view class="ad-tips-good">好货推荐</view>
                     <text class="price">￥19.9</text>
-                    <button type="primary" size="mini" class="joinCart">加入购物车</button>
+                    <button type="primary" size="mini" class="joinCart" @click="onClick">加入购物车</button>
                   </view>
                 </view>
               </uni-col>
@@ -50,38 +46,54 @@
           </uni-row>
         </view>
       </view>
-    <!-- 二楼的item -->
-    <view class="floor-item">
-      <!-- 楼层的标题 -->
-      <text class="good">热销好货</text>
-      <view class="goods_items" v-for="item in flooData" :key="item.id">
-        <uni-row>
-          <uni-card class="card">
-            <uni-col :span="10">
-              <navigator class="item_img" :url="'/subpackage/goods_detail/goods_detail?id=' + item.id"><image :src="item.img_src" mode=""></image></navigator>
-            </uni-col>
-            <uni-col :span="14">
-              <view class="desc">
-                <view>好吃的水果海鲜</view>
-                <view class="about">
-                  <view class="ad-tips-hot">
-                    热销好货
+      <!-- 二楼的item -->
+      <view class="floor-item">
+        <!-- 楼层的标题 -->
+        <text class="good">热销好货</text>
+        <view class="goods_items" v-for="item in flooData" :key="item.id">
+          <uni-row>
+            <uni-card class="card">
+              <uni-col :span="10">
+                <navigator class="item_img" :url="'/subpackage/goods_detail/goods_detail?id=' + item.id"><image :src="item.img_src" mode=""></image></navigator>
+              </uni-col>
+              <uni-col :span="14">
+                <view class="desc">
+                  <view>好吃的水果海鲜</view>
+                  <view class="about">
+                    <view class="ad-tips-hot">热销好货</view>
+                    <text class="price">￥19.9</text>
+                    <button type="primary" size="mini" class="joinCart" @click="onClick">加入购物车</button>
                   </view>
-                  <text class="price">￥19.9</text>
-                  <button type="primary" size="mini" class="joinCart">加入购物车</button>
                 </view>
-              </view>
-            </uni-col>
-          </uni-card>
-        </uni-row>
+              </uni-col>
+            </uni-card>
+          </uni-row>
+        </view>
       </view>
-    </view>
     </view>
   </view>
 </template>
 
 <script>
+  import badgeMix from '@/mixins/tabbar-badge.js'
+import { mapState, mapMutations, mapGetters } from 'vuex';
 export default {
+   mixins:[badgeMix],
+  computed: {
+    ...mapGetters('m_cart', ['total'])
+  },
+watch:{
+  total:{
+    handler(newVal){
+      uni.setTabBarBadge({
+        index:2,
+        text:newVal+""
+      })
+    },
+     immediate: true
+  }
+ 
+},
   data() {
     return {
       swiperList: [
@@ -170,25 +182,37 @@ export default {
       ]
     };
   },
+
   methods: {
+    ...mapMutations('m_cart', ['addToCart']),
     navClickHandler(item) {
       //判断点击的是那个nav
       if (item.name === '分类') {
         uni.switchTab({
           url: '/pages/cate/cate'
         });
-        return
+        return;
       }
       uni.navigateTo({
-        url:"/subpackage/goods_list/goods_list?id="+item.id
-      })
-     
+        url: '/subpackage/goods_list/goods_list?id=' + item.id
+      });
     },
-    gotoSearch(){
+    gotoSearch() {
       uni.navigateTo({
-        url:"/subpackage/search/search"
-      })
-    }
+        url: '/subpackage/search/search'
+      });
+    },
+    onClick() {
+      const goods = {
+        goods_id: this.flooData[0].id, // 商品的Id
+        goods_name: this.flooData[0].title, // 商品的名称
+        goods_price: 9.9, // 商品的价格
+        goods_count: 1, // 商品的数量
+        goods_state: true // 商品的勾选状态
+      };
+      this.addToCart(goods);
+    },
+   
   }
 };
 </script>
@@ -251,7 +275,7 @@ swiper {
 }
 .ad-tips-good {
   position: absolute;
-  background-color: #67C23A;
+  background-color: #67c23a;
   width: 100rpx;
   font-size: 20rpx;
   text-align: center;
@@ -261,7 +285,7 @@ swiper {
 }
 .ad-tips-hot {
   position: absolute;
-  background-color: #F56C6C;
+  background-color: #f56c6c;
   width: 100rpx;
   font-size: 20rpx;
   text-align: center;
