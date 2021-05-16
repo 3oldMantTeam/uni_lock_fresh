@@ -50,6 +50,15 @@
                 }
                 
                 }
+                ,{
+                    "path" : "undefine/undefine",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
             ]
   }],
   "globalStyle": {
