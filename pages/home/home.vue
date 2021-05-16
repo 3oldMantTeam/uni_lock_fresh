@@ -236,7 +236,7 @@ swiper {
   margin-top: 140rpx;
   align-items: center;
   .price {
-    font-size: 38rpx;
+    font-size: 40rpx;
     line-height: 38rpx;
     font-weight: bold;
     color: #c00000;
@@ -246,28 +246,28 @@ swiper {
     border-radius: 36rpx;
     font-size: 24rpx;
     text-align: center;
-    background-color: #dc7004;
+    background-color: #ff0000;
   }
 }
 .ad-tips-good {
   position: absolute;
   background-color: #67C23A;
-  width: 140rpx;
-  font-size: 22rpx;
+  width: 100rpx;
+  font-size: 20rpx;
   text-align: center;
   border-radius: 10rpx;
-  top: -45rpx;
-  left: -8rpx;
+  top: -36rpx;
+  left: 4rpx;
 }
 .ad-tips-hot {
   position: absolute;
   background-color: #F56C6C;
-  width: 140rpx;
-  font-size: 22rpx;
+  width: 100rpx;
+  font-size: 20rpx;
   text-align: center;
   border-radius: 10rpx;
-  top: -45rpx;
-  left: -8rpx;
+  top: -36rpx;
+  left: -4rpx;
 }
 .my-search-box {
   position: sticky;
