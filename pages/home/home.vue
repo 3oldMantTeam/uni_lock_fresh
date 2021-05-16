@@ -7,7 +7,7 @@
     <!-- 轮播图区域 -->
     <swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" circular>
       <swiper-item v-for="item in swiperList" :key="item.id">
-        <navigator class="swiper-item" :url="'/subpackage/goods_detail/goods_detail?id=' + item.id"><image :src="item.img_src" mode=""></image></navigator>
+        <navigator class="swiper-item" :url="'/subpackage/goods_list/goods_list?id=' + item.id"><image :src="item.img_src" mode=""></image></navigator>
       </swiper-item>
     </swiper>
     <!-- nav区域 -->
@@ -177,7 +177,11 @@ export default {
         uni.switchTab({
           url: '/pages/cate/cate'
         });
+        return
       }
+      uni.navigateTo({
+        url:"/subpackage/goods_list/goods_list?id="+item.id
+      })
      
     },
     gotoSearch(){
